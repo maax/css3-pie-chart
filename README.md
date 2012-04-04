@@ -4,7 +4,7 @@ A SASS/Compass mixin for pure CSS pie charts.
 
 ## Usage
 
-Based on the follwing HTML/HAML structure
+Based on the follwing HTML/HAML structure:
 
 ``` haml
 %ul#pie-chart
@@ -13,7 +13,7 @@ Based on the follwing HTML/HAML structure
       .section-fill
 ```
 
-use the _pie-chart_ mixin in your SASS-file like this
+use the _pie-chart()_ mixin in your SASS-file like this:
 
 ``` sass
 $sections: cyan 45, magenta 90, yellow 180, black 45
@@ -22,13 +22,11 @@ $sections: cyan 45, magenta 90, yellow 180, black 45
   +pie-chart(300px, $sections)
 ```
 
-with the following parameters
+with the following parameters:
 
-``` sass
-$diameter // in px
-$sections // color and degrees of each section
-$gradient // if you want a radial gradient, default is true
-```
+    $diameter   // in px
+    $sections   // color and degrees of each section
+    $gradient   // if you want a radial gradient, default is true
 
 ## Todo
 1. allow sections > 180°
