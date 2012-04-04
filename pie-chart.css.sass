@@ -1,0 +1,38 @@
+// Usage example:
+// ----------------
+// $diameter: 300px
+// $sections: red 20, orange 40, yellow 160, cyan 120, green 20
+// #pie-chart
+//   +pie-chart($diameter, $sections)
+
+@mixin pie-chart($diameter, $sections, $gradient: true)
+  position: relative
+  width: $diameter
+  height: $diameter
+  list-style-type: none
+  -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(255, 255, 255, 0.2)))
+
+  .section
+    position: absolute
+    width: $diameter
+    height: $diameter
+    clip: rect(0, $diameter, $diameter, $diameter/2)
+
+  .section-fill
+    position: absolute
+    width: $diameter
+    height: $diameter
+    clip: rect(0, $diameter/2, $diameter,0)
+    +border-radius($diameter/2)
+
+  $sections-sum: 0
+  @for $i from 1 through length($sections)
+    $section: nth($sections, $i)
+    .section:nth-child(#{$i})
+      +rotate($sections-sum+deg)
+      $sections-sum: $sections-sum + nth($section, 2)
+      .section-fill
+        +rotate(nth($section, 2)+deg)
+        background-color: nth($section, 1)
+        @if $gradient
+          +background-image(radial-gradient(nth($section, 1) $diameter/10, darken(nth($section, 1), 13%) $diameter/2))
