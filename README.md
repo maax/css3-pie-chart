@@ -13,20 +13,22 @@ Based on the follwing HTML/HAML structure
       .section-fill
 ```
 
-use the _pie-chart_ mixin in your SASS-file like this:
+use the _pie-chart_ mixin in your SASS-file like this
 
 ``` sass
-$sections: red 20, orange 40, yellow 160, cyan 120, green 20
+$sections: cyan 45, magenta 90, yellow 180, black 45
   
 #pie-chart
   +pie-chart(300px, $sections)
 ```
 
-Parameters
+with the following parameters
 
-* $diameter (in px)
-* $sections (color and degrees of each section)
-* $gradient (if you want a radial gradient, default is true)
+``` sass
+$diameter // in px
+$sections // color and degrees of each section
+$gradient // if you want a radial gradient, default is true
+```
 
 ## Todo
 1. allow sections > 180°
