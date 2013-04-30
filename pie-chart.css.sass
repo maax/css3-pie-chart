@@ -1,31 +1,35 @@
-@mixin pie-chart($diameter, $sections, $gradient: true)
+@mixin pie-chart($sections, $diameter, $initial-rotation: 0, $gradient: true)
   position: relative
   width: $diameter
   height: $diameter
   list-style-type: none
-  -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(255, 255, 255, 0.2)))
 
-  .section
-    position: absolute
-    width: $diameter
-    height: $diameter
-    clip: rect(0, $diameter, $diameter, $diameter/2)
-
-  .section-fill
-    position: absolute
-    width: $diameter
-    height: $diameter
-    clip: rect(0, $diameter/2, $diameter,0)
-    +border-radius($diameter/2)
-
-  $sections-sum: 0
+  $sections-sum: 0 + $initial-rotation
   @for $i from 1 through length($sections)
     $section: nth($sections, $i)
-    .section:nth-child(#{$i})
-      +rotate($sections-sum+deg)
-      $sections-sum: $sections-sum + nth($section, 2)
-      .section-fill
-        +rotate(nth($section, 2)+deg)
-        background-color: nth($section, 1)
+
+    .pie-chart-section:nth-child(#{$i})
+      position: absolute
+      width: $diameter
+      height: $diameter
+      transform: rotate($sections-sum * 3.6 + deg)
+      -webkit-transform: rotate($sections-sum * 3.6 + deg)
+      $sections-sum: $sections-sum + nth($section, 1)
+      @if nth($section, 1) < 50
+        clip: rect(0, $diameter, $diameter, $diameter/2)
+        z-index: 1
+
+      &:after
+        content: ""
+        position: absolute
+        width: $diameter
+        height: $diameter
+        border-radius: $diameter/2
+        background-color: nth($section, 2)
+        transform: rotate(nth($section, 1) * 3.6 + deg)
+        -webkit-transform: rotate(nth($section, 1) * 3.6 + deg)
+        @if nth($section, 1) < 50
+          clip: rect(0, $diameter/2, $diameter,0)
         @if $gradient
-          +background-image(radial-gradient(nth($section, 1) $diameter/10, darken(nth($section, 1), 13%) $diameter/2))
+          background: radial-gradient(nth($section, 2) $diameter/10, darken(nth($section, 2), 13%) $diameter/2)
+          background: -webkit-radial-gradient(nth($section, 2) $diameter/10, darken(nth($section, 2), 13%) $diameter/2)

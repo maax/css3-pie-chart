@@ -1,6 +1,6 @@
 # CSS3 Pie Chart
 
-A SASS/Compass mixin for pure CSS pie charts.
+A SASS mixin for pure CSS pie charts.
 
 ## Usage
 
@@ -9,26 +9,44 @@ Based on the follwing HTML/HAML structure:
 ``` haml
 %ul#pie-chart
   - 4.times do
-    %li.section
-      .section-fill
+    %li.pie-chart-section
 ```
 
 use the _pie-chart()_ mixin in your SASS-file like this:
 
 ``` sass
-$sections: cyan 45, magenta 90, yellow 180, black 45
-  
+
+$sections: 60 red, 20 green, 10 blue, 10 black
+
 #pie-chart
-  +pie-chart(300px, $sections)
+  +pie-chart($sections, $diameter: 400px)
 ```
 
 with the following parameters:
 
-    $diameter   // in px
-    $sections   // color and degrees of each section
-    $gradient   // if you want a radial gradient, default is true
+    $sections   	  	// percentage and color of each section
+    $diameter   	  	// in px
+  	$inital-rotation 	// in degrees
+    $gradient   	 	// if you want a radial gradient, default is true
 
-## Todo
-1. allow sections > 180°
-2. specify sections in %
-3. test in non-Webkit browsers
+## Browser Support
+<table width="100%" style="text-align: center;">
+  <thead>
+    <tr>
+      <td>Safari</td>
+      <td>Chrome</td>
+      <td>Firefox</td>
+      <td>IE9</td>
+      <td>IE10</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>✔</td>
+      <td>✔</td>
+      <td>✔</td>
+      <td>✖</td>
+      <td>✔</td>
+    </tr>
+  </tbody>
+</table>
