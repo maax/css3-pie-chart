@@ -4,7 +4,7 @@ A SASS mixin for pure CSS pie charts.
 
 ## Usage
 
-Based on the follwing HTML/HAML structure:
+Based on the following HTML/HAML structure:
 
 ``` haml
 %ul#pie-chart
@@ -12,7 +12,7 @@ Based on the follwing HTML/HAML structure:
     %li.pie-chart-section
 ```
 
-use the _pie-chart()_ mixin in your SASS-file like this:
+use the _pie-chart()_ mixin in your SASS file like this:
 
 ``` sass
 
@@ -26,8 +26,8 @@ with the following parameters:
 
     $sections   	  	// percentage and color of each section
     $diameter   	  	// in px
-  	$inital-rotation 	// in degrees
-    $gradient   	 	// if you want a radial gradient, default is true
+  	$inital-rotation 	// in degrees (default is 0°)
+    $gradient   	 	// if you want a radial gradient (default is true)
 
 ## Browser Support
 <table width="100%" style="text-align: center;">
