@@ -12,7 +12,7 @@ Based on the following HTML/HAML structure:
     .pie-chart-section
 ```
 
-use the _pie-chart()_ mixin in your SASS file like this:
+use the ``pie-chart()`` mixin in your SASS file like this:
 
 ``` sass
 
