@@ -8,7 +8,7 @@ Based on the following HTML/HAML structure:
 
 ``` haml
 #pie-chart
-  - 4.times do
+  - 3.times do
     .pie-chart-section
 ```
 
@@ -16,7 +16,7 @@ use the ``pie-chart()`` mixin in your SASS file like this:
 
 ``` sass
 
-$sections: 60 red, 20 green, 10 blue, 10 black
+$sections: 60 red, 30 green, 10 blue
 
 #pie-chart
   +pie-chart($sections, $diameter: 400px)
